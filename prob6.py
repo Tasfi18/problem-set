@@ -28,4 +28,4 @@ try:
     for _ in range(int(next(it))):
         A,B=int(next(it)),int(next(it))
         print(calc(B)-calc(A-1))
-except:pass
+except StopIteration:pass  # end of input

@@ -30,7 +30,8 @@ try:
         ops=lazy=0
         while pq:
             val,_,node=heapq.heappop(pq)
-            if node.r:continue
+            # skip removed runs and stale entries left behind when a run grew by merging
+            if node.r or val!=node.v:continue
             h=max(0,val-lazy)
             ops+=h
             lazy+=h
@@ -48,4 +49,4 @@ try:
             elif pn:pn.n=None
             elif nn:nn.p=None
         print(ops)
-except:pass
+except StopIteration:pass  # end of input

@@ -22,5 +22,5 @@ try:
         print(f"Minimum Number of Trips = {trips}")
         print()
         c_no+=1
-except:
-    pass
+except StopIteration:
+    pass  # end of input

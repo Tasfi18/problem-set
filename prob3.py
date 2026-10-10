@@ -16,7 +16,8 @@ class FenwickTree:
         return s
     def find_kth(self,k):
         idx,curr_sum=0,0
-        for i in range(17,-1,-1):
+        # start from the highest power of two that fits (17 bits only covered sizes up to 262,143)
+        for i in range(self.size.bit_length(),-1,-1):
             next_idx=idx+(1<<i)
             if next_idx<=self.size and curr_sum+self.tree[next_idx]<k:
                 idx=next_idx
@@ -50,4 +51,4 @@ try:
                     print(data_map[idx])
                     bit.update(idx,-1)
                     cnt-=1
-except:pass
+except StopIteration:pass  # end of input

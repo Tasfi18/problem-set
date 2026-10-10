@@ -15,4 +15,4 @@ try:
                 else:
                     dp[s][e]=dp[s+1][e]+dp[s][e-1]-dp[s+1][e-1]
         print(f"Case {i}: {dp[0][n-1]}")
-except:pass
+except StopIteration:pass  # end of input
